@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Student Planner Dashboard</h1>
+      <p>Manage tasks, calendar events, and study sessions.</p>
+    </header>
+
+    <main class="container">
+      <nav class="top-tabs">
+        <button class="top-tab active" data-tab="todo">To-Do List</button>
+        <button class="top-tab" data-tab="calendar">Calendar</button>
+        <button class="top-tab" data-tab="timer">Timer</button>
+      </nav>
+
+      <section id="todo-section" class="card section active">
+        <h2>To-Do List</h2>
+        <form id="task-form" class="form-grid">
+          <input name="taskTitle" placeholder="Task title" required maxlength="80" />
+          <input name="taskDueDate" type="date" required />
+          <select name="taskPriority">
+            <option value="Low">Low Priority</option>
+            <option value="Medium" selected>Medium Priority</option>
+            <option value="High">High Priority</option>
+          </select>
+          <textarea
+            name="taskDescription"
+            rows="2"
+            maxlength="200"
+            placeholder="Task description (optional)"
+          ></textarea>
+          <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list" class="list"></ul>
+      </section>
+
+      <section id="calendar-section" class="card section">
+        <div class="section-header">
+          <h2>Calendar</h2>
+          <div class="view-controls">
+            <button data-view="day" class="view-btn active">Day</button>
+            <button data-view="week" class="view-btn">Week</button>
+            <button data-view="month" class="view-btn">Month</button>
+          </div>
+        </div>
+        <form id="event-form" class="form-grid">
+          <input name="eventTitle" placeholder="Event title" required maxlength="80" />
+          <input name="eventStartDateTime" type="datetime-local" required />
+          <input name="eventEndDateTime" type="datetime-local" required />
+          <textarea
+            name="eventDescription"
+            rows="2"
+            maxlength="200"
+            placeholder="Event description (optional)"
+          ></textarea>
+          <button type="submit">Save Event</button>
+        </form>
+        <h3 id="calendar-view-title">Day View</h3>
+        <ul id="event-list" class="list"></ul>
+      </section>
+
+      <section id="timer-section" class="card section">
+        <h2>Study Timer</h2>
+        <form id="timer-form" class="timer-row">
+          <label for="minutes">Minutes</label>
+          <input id="minutes" name="minutes" type="number" min="1" max="240" required />
+          <button type="submit">Set & Start</button>
+        </form>
+        <p id="timer-display" class="timer-display">00:00</p>
+        <div class="timer-actions">
+          <button id="pause-timer" type="button">Pause</button>
+          <button id="reset-timer" type="button">Reset Timer</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
